@@ -204,7 +204,7 @@ function convertNumberToString(numberStr) {
         ans += 'point';
         break;
       default:
-        console.log('No match');
+        ans += 'No match';
     }
   }
   return ans;
