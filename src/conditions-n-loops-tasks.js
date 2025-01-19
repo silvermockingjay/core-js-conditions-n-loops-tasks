@@ -569,11 +569,16 @@ function getNearestBigger(number) {
   arr[left] = arr[right];
   arr[right] = elem;
 
-  const start = left + 1;
-  const end = arr.length;
+  for (let i = left + 2; i < arr.length; i += 1) {
+    const key = arr[i];
+    let j = i - 1;
 
-  const subArr = arr.slice(start).sort((a, b) => a - b);
-  arr.splice(start, end - start, ...subArr);
+    while (j >= left + 1 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j -= 1;
+    }
+    arr[j + 1] = key;
+  }
 
   let res = '';
   for (let i = 0; i < arr.length; i += 1) {
